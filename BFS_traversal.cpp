@@ -34,6 +34,8 @@ vector<int> bfsOfGraph(vector<vector<int>> &adj) {
     }
 
     return bfs;
+    // Time Complexity will be O(N + E) as queue will run for each nodes and
+    // at most graph will have 2E edges.
 }
 
 int main() {
