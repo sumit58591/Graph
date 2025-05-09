@@ -41,12 +41,18 @@ vector<int> bfsOfGraph(vector<vector<int>> &adj) {
 int main() {
     int noOfNodes, noOfEdges;
     cin >> noOfNodes >> noOfEdges;
-    vector<vector<int>>adjList (noOfNodes);
-    for(int i = 0; i < noOfEdges; i++) {
-        int u, v;
-        cin >> u >> v;
-        adjList[u].push_back(v);
-        adjList[v].push_back(u);
+    vector<vector<int>> adjList(noOfNodes);
+    for(int i = 0; i < noOfNodes; i++) {
+        int neighborsCount;
+        cin >> neighborsCount;
+        vector<int> neighbors;
+        for(int j = 0; j < neighborsCount; j++) {
+            int currNeighbor;
+            cin >> currNeighbor;
+            neighbors.push_back(currNeighbor);
+        }
+
+        adjList[i] = neighbors;
     }
 
     vector<int> bfs = bfsOfGraph(adjList);

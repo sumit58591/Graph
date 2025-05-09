@@ -26,19 +26,23 @@ vector<int> dfsOfGraph(vector<vector<int>>& adj) {
 }
 
 int main() {
-    int numberOfNodes, numberOfEdges;
-    cin >> numberOfNodes >> numberOfEdges;
-    vector<vector<int>> adjList(numberOfNodes);
-    for(int i = 0; i < numberOfNodes; i++) {
-        for(int j = 0; j < numberOfEdges; j++) {
-            int u, v;
-            cin >> u >> v;
-            adjList[u].push_back(v);
-            adjList[v].push_back(u);
+    int noOfNodes, noOfEdges;
+    cin >> noOfNodes >> noOfEdges;
+    vector<vector<int>> adjList(noOfNodes);
+    for(int i = 0; i < noOfNodes; i++) {
+        int neighborsCount;
+        cin >> neighborsCount;
+        vector<int> neighbors;
+        for(int j = 0; j < neighborsCount; j++) {
+            int currNeighbor;
+            cin >> currNeighbor;
+            neighbors.push_back(currNeighbor);
         }
+
+        adjList[i] = neighbors;
     }
 
-    vector<int> bfsTraversal = dfsOfGraph(adjList);
-    for(int i = 0; i < bfsTraversal.size(); i++) cout << bfsTraversal[i] << " ";
+    vector<int> dfs = dfsOfGraph(adjList);
+    for(int i = 0; i < dfs.size(); i++) cout << dfs[i] << " ";
     return 0;
 }
